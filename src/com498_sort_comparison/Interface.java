@@ -1,10 +1,7 @@
 package com498_sort_comparison;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 
 /*
 
@@ -105,9 +102,9 @@ public class Interface {
 
         if (mode == 1) { // User input required
 
-            // Get size of array
-            while (size <= 1 && ) {
+            while (size <= 0) {
 
+                // Get size of array
                 System.out.println("Size of array?");
                 size = input.nextInt();
 
@@ -117,7 +114,7 @@ public class Interface {
             input.nextLine();
 
             // Should array be worst case scenario?
-            System.out.println("Worst case scenario?");
+            System.out.println("Worst case scenario? (y/n)");
             scenario = input.nextLine();
 
         } else { // User input not required, use default values
@@ -154,13 +151,39 @@ public class Interface {
 
         // TODO: bubble sort
         // Check if arrayUnsorted is populated (or if user entered a stupid length value I guess)
+        int temp;
+        boolean swapped = true;
+
         if (arrayUnsorted.length <= 1) { // If array is not populated
 
             generateArray(0); // populate it
 
         }
 
+        arrayDuplicate = arrayUnsorted; // Create duplicate of array to leave original intact for other sorts
 
+        for (int i = 0; i < arrayDuplicate.length; i ++) { // For every item in array
+
+            for (int j = 1; j < (arrayDuplicate.length - i); j ++) { // except items after the last swap of the pass
+
+                if (arrayDuplicate[j - 1] > arrayDuplicate[j]) { // if previous item is greater than current item
+
+                    // swap 'em
+                    temp = arrayDuplicate[j - 1];
+                    arrayDuplicate[j - 1] = arrayDuplicate[j];
+                    arrayDuplicate[j] = temp;
+
+                    if (mode == 1) { // If algorithm needs to be traced
+
+                        System.out.println(Arrays.toString(arrayDuplicate)); // print current state of array
+
+                    }
+
+                }
+
+            }
+
+        }
 
     }
 
