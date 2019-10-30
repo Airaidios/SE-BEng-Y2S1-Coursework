@@ -19,6 +19,8 @@ public class Interface {
 
     // For generation of arrays to be sorted
     private static Integer[] arrayUnsorted;
+    private static Integer[] arrayDuplicate;
+    private static Integer[] arraySorted;
 
     public static void main(String[] args) throws IOException {
 
@@ -64,17 +66,17 @@ public class Interface {
 
             case "2":
 
-                bubbleSort();
+                bubbleSort(1);
                 break;
 
             case "3":
 
-                selectSort();
+                selectSort(1);
                 break;
 
             case "4":
 
-                shellSort();
+                shellSort(1);
                 break;
 
             case "5":
@@ -95,17 +97,21 @@ public class Interface {
     // Generate random, unsorted array of given size
     // If called intentionally by user (option 1 in mainMenu) allow for user input for these variables
     // Otherwise (called by sorting algorithms if there is no pre-existing unsorted array) use default values
-    private Integer[] generateArray(int mode) {
+    private Integer[] generateArray(int mode) throws IOException {
 
-        int size; // size of array
+        int size = 0; // size of array
         String scenario; // case scenario (average or worst)
         Random random = new Random(); // for generating random integer
 
         if (mode == 1) { // User input required
 
             // Get size of array
-            System.out.println("Size of array?");
-            size = input.nextInt();
+            while (size <= 1 && ) {
+
+                System.out.println("Size of array?");
+                size = input.nextInt();
+
+            }
 
             // I swear this makes the input.nextLine() below work
             input.nextLine();
@@ -120,6 +126,8 @@ public class Interface {
             scenario = "n";
 
         }
+
+        arrayUnsorted = new Integer[size];
 
         // Populate arrayUnsorted with random integers
         for (int i = 0; i < size; i ++) { // for every index in arrayUnsorted
@@ -139,25 +147,60 @@ public class Interface {
 
     }
 
-    private void bubbleSort() {
+    // Simple bubble sort, uses arrayUnsorted
+    // If mode == 1, trace sort, print at each step
+    // Otherwise, just sort
+    private void bubbleSort(int mode) throws IOException {
 
         // TODO: bubble sort
+        // Check if arrayUnsorted is populated (or if user entered a stupid length value I guess)
+        if (arrayUnsorted.length <= 1) { // If array is not populated
+
+            generateArray(0); // populate it
+
+        }
+
+
 
     }
 
-    private void selectSort() {
+    // If mode == 1, trace sort, print at each step
+    // Otherwise, just sort
+    private void selectSort(int mode) throws IOException {
 
         // TODO: select sort
+        if (mode == 1) { // Trace sort
+
+
+
+        } else { // Just sort
+
+
+
+        }
 
     }
 
-    private void shellSort() {
+    // If mode == 1, trace sort, print at each step
+    // Otherwise, just sort
+    private void shellSort(int mode) throws IOException {
 
         // TODO: shell sort
+        if (mode == 1) { // Trace sort
+
+
+
+        } else { // Just sort
+
+
+
+        }
 
     }
 
-    private void compareAll() {
+    // If mode == 1, trace sort, print at each step
+    // Otherwise, just sort
+    private void compareAll() throws IOException {
 
         // TODO: comparative analysis of all algorithms
 

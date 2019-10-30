@@ -34,6 +34,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Interface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com498_sort_comparison.Interface" />
+      <module name="COM498 Coursework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com498_sort_comparison.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Interface" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -46,7 +66,8 @@
       <updated>1572370885116</updated>
       <workItem from="1572370891081" duration="13000" />
       <workItem from="1572370926365" duration="3304000" />
-      <workItem from="1572444568121" duration="1555000" />
+      <workItem from="1572444568121" duration="1816000" />
+      <workItem from="1572453047875" duration="2591000" />
     </task>
     <servers />
   </component>
