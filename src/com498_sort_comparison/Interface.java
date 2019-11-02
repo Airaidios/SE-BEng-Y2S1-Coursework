@@ -154,7 +154,7 @@ public class Interface {
         int temp;
         boolean swapped = true;
 
-        if (arrayUnsorted.length <= 1) { // If array is not populated
+        if (arrayUnsorted ==  null) { // If array is not populated
 
             generateArray(0); // populate it
 
@@ -191,14 +191,49 @@ public class Interface {
     // Otherwise, just sort
     private void selectSort(int mode) throws IOException {
 
-        // TODO: select sort
-        if (mode == 1) { // Trace sort
+        int i;
+        int j;
+        int min;
+        int minItem;
 
+        // Check if array is not populated
+        if (arrayUnsorted == null) {
 
+            generateArray(0); // populate if empty
 
-        } else { // Just sort
+        }
 
+        arrayDuplicate = arrayUnsorted; // Duplicate array for sorting
 
+        for (i = 0; i < arrayDuplicate.length - 1; i ++) { // For items in array
+
+            min = i; // assume minimum is first element
+
+            for (j = i + 1; j < arrayDuplicate.length; j ++) { // test elements after i
+
+                if (arrayDuplicate[j] < arrayDuplicate[min]) { // if element is less than i
+
+                    min = j; // remember the index
+
+                }
+
+            }
+
+            minItem = arrayDuplicate[min];
+
+            for (j = min; j > 1; j--) { // in all elements of unsorted sub array
+
+                arrayDuplicate[j] = arrayDuplicate[j - 1]; // swap smallest element with first element in unsorted array
+
+            }
+
+            arrayDuplicate[i] = minItem;
+
+            if (mode == 1) { // Trace sort
+
+                System.out.println(Arrays.toString(arrayDuplicate)); // print current state of array
+
+            }
 
         }
 
