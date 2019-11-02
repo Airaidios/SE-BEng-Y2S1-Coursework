@@ -162,6 +162,7 @@ public class Interface {
 
         arrayDuplicate = arrayUnsorted; // Create duplicate of array to leave original intact for other sorts
 
+
         for (int i = 0; i < arrayDuplicate.length; i ++) { // For every item in array
 
             for (int j = 1; j < (arrayDuplicate.length - i); j ++) { // except items after the last swap of the pass
@@ -187,51 +188,39 @@ public class Interface {
 
     }
 
-    // If mode == 1, trace sort, print at each step
-    // Otherwise, just sort
+    // If mode == 1, trace sort, print at each step, otherwise, just sort
     private void selectSort(int mode) throws IOException {
 
-        int i;
-        int j;
-        int min;
-        int minItem;
-
-        // Check if array is not populated
         if (arrayUnsorted == null) {
 
-            generateArray(0); // populate if empty
+            generateArray(0);
 
         }
 
-        arrayDuplicate = arrayUnsorted; // Duplicate array for sorting
+        arrayDuplicate = arrayUnsorted;
 
-        for (i = 0; i < arrayDuplicate.length - 1; i ++) { // For items in array
+        int n = arrayDuplicate.length;
 
-            min = i; // assume minimum is first element
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++) {
 
-            for (j = i + 1; j < arrayDuplicate.length; j ++) { // test elements after i
+            // Find the minimum element in unsorted array
+            int min_idx = i;
 
-                if (arrayDuplicate[j] < arrayDuplicate[min]) { // if element is less than i
+            for (int j = i+1; j < n; j++)
 
-                    min = j; // remember the index
+                if (arrayDuplicate[j] < arrayDuplicate[min_idx])
 
-                }
+                    min_idx = j;
 
-            }
+            // Swap the found minimum element with the first element
+            int temp = arrayDuplicate[min_idx];
+            arrayDuplicate[min_idx] = arrayDuplicate[i];
+            arrayDuplicate[i] = temp;
 
-            minItem = arrayDuplicate[min];
+            if (mode == 1) { // Trace algo
 
-            for (j = min; j > 1; j--) { // in all elements of unsorted sub array
-
-                arrayDuplicate[j] = arrayDuplicate[j - 1]; // swap smallest element with first element in unsorted array
-
-            }
-
-            arrayDuplicate[i] = minItem;
-
-            if (mode == 1) { // Trace sort
-
-                System.out.println(Arrays.toString(arrayDuplicate)); // print current state of array
+                System.out.println(Arrays.toString(arrayDuplicate));
 
             }
 
