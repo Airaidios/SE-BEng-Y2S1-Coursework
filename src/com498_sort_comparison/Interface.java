@@ -140,6 +140,8 @@ public class Interface {
 
         }
 
+        arrayDuplicate = new Integer[arrayUnsorted.length];
+
         return arrayUnsorted;
 
     }
@@ -160,7 +162,11 @@ public class Interface {
 
         }
 
-        arrayDuplicate = arrayUnsorted; // Create duplicate of array to leave original intact for other sorts
+        for (int i = 0; i < arrayUnsorted.length; i ++) { // Duplicate array
+
+            arrayDuplicate[i] = arrayUnsorted[i];
+
+        }
 
 
         for (int i = 0; i < arrayDuplicate.length; i ++) { // For every item in array
@@ -197,7 +203,11 @@ public class Interface {
 
         }
 
-        arrayDuplicate = arrayUnsorted;
+        for (int i = 0; i < arrayUnsorted.length; i ++) { // Duplicate array (could use .clone() but I don't want to)
+
+            arrayDuplicate[i] = arrayUnsorted[i];
+
+        }
 
         int n = arrayDuplicate.length;
 
