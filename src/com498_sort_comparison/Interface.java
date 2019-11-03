@@ -151,7 +151,6 @@ public class Interface {
     // Otherwise, just sort
     private void bubbleSort(int mode) throws IOException {
 
-        // TODO: bubble sort
         // Check if arrayUnsorted is populated (or if user entered a stupid length value I guess)
         int temp;
         boolean swapped = true;
@@ -168,6 +167,7 @@ public class Interface {
 
         }
 
+        System.out.println(Arrays.toString(arrayDuplicate)); // Print unsorted array for posterity I guess?
 
         for (int i = 0; i < arrayDuplicate.length; i ++) { // For every item in array
 
@@ -209,23 +209,27 @@ public class Interface {
 
         }
 
-        int n = arrayDuplicate.length;
+        System.out.println(Arrays.toString(arrayDuplicate));
 
         // One by one move boundary of unsorted subarray
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < arrayDuplicate.length - 1; i ++) {
 
             // Find the minimum element in unsorted array
-            int min_idx = i;
+            int minItem = i;
 
-            for (int j = i+1; j < n; j++)
+            for (int j = i + 1; j < arrayDuplicate.length; j ++) {
 
-                if (arrayDuplicate[j] < arrayDuplicate[min_idx])
+                if (arrayDuplicate[j] < arrayDuplicate[minItem]) {
 
-                    min_idx = j;
+                    minItem = j;
+
+                }
+
+            }
 
             // Swap the found minimum element with the first element
-            int temp = arrayDuplicate[min_idx];
-            arrayDuplicate[min_idx] = arrayDuplicate[i];
+            int temp = arrayDuplicate[minItem];
+            arrayDuplicate[minItem] = arrayDuplicate[i];
             arrayDuplicate[i] = temp;
 
             if (mode == 1) { // Trace algo
@@ -242,14 +246,45 @@ public class Interface {
     // Otherwise, just sort
     private void shellSort(int mode) throws IOException {
 
-        // TODO: shell sort
-        if (mode == 1) { // Trace sort
+        if (arrayUnsorted ==  null) { // If array is not populated
 
+            generateArray(0); // populate it
 
+        }
 
-        } else { // Just sort
+        for (int i = 0; i < arrayUnsorted.length; i ++) { // Duplicate array
 
+            arrayDuplicate[i] = arrayUnsorted[i];
 
+        }
+
+        System.out.println(Arrays.toString(arrayDuplicate));
+
+        // Using original Shell gap sequence
+        for (int gap = arrayDuplicate.length / 2; gap > 0; gap /= 2)
+        {
+
+            // Do gapped insert sort for current gap size
+            for (int i = gap; i < arrayDuplicate.length; i += 1)
+            {
+                // add current item to the elements that have been gap sorted. Save item in temp and make a hole at
+                // current pos
+                int temp = arrayDuplicate[i];
+
+                // shift earlier gap-sorted elements up until the correct location for current item is found
+                int j;
+                for (j = i; j >= gap && arrayDuplicate[j - gap] > temp; j -= gap)
+                    arrayDuplicate[j] = arrayDuplicate[j - gap];
+
+                // put temp in its correct location
+                arrayDuplicate[j] = temp;
+            }
+
+            if (mode == 1) { // Trace sort
+
+                System.out.println(Arrays.toString(arrayDuplicate));
+
+            }
 
         }
 
